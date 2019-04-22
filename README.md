@@ -1,6 +1,6 @@
 # Best script practices
 
-![Bash](https://cdn-images-1.medium.com/max/600/1*FEE98iWinlZBYkxBAG8MvA.png)
+![Bash](https://cdn-images-1.medium.com/max/256/1*FEE98iWinlZBYkxBAG8MvA.png)
 
 **Bash** is an ideal systems language for UNIX or command line tasks. It can cover almost all of your problems, you just need to know to use use it.
 
@@ -58,6 +58,10 @@
 
   * It should always return 0 on success or different value in other case, it would be great if you can handle those
 
+* **Security**
+  
+  * Don't store your credentials in shell scripts, people can have access to your script. Use `ENV` variables or vaults instead.
+
 * **Useful Tips**
   
   * Prefer absolute paths `/home/user/file` instead of relative `~/file`
@@ -66,8 +70,11 @@
 
   * Never use deprecated style.
 
-    * Define functions as func() { }
+    * Define functions as `func() { }`
 
-    * Always use [[ instead of [
+    * Always use `[[...]]` instead of `[]`
 
-    * Never use backticks, use $( ... )]
+    * Never use backticks, use `$( ... )`
+
+  * You should always remember that your script can be executed on other machines or in container, so you need to use environment variables i.e.
+  `cd $HOME` instead of `cd /home/user`
