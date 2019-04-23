@@ -1,0 +1,12 @@
+#!/bin/bash
+#This script will create a directory
+#and postgres database backup with current
+#time file name. Also it it will delete the oldest 
+
+app="project"
+mkdir -p $HOME/db_backups/"$app"/
+now=$(date +"%d-%m-%Y")
+filename="dump_$now"
+path=$HOME/db_backups/"$app"/"$filename"
+pg_dump --no-acl "$app"_production > "$path"
+find $HOME/db_backups/"$app" -mtime +10 -delete 

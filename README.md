@@ -76,7 +76,17 @@
   ```
 
   * It should always return 0 on success or different value in other case, it would be great if you can handle those
+
+  * If your script require user input, use prompts
   
+    ```bash
+    printf "Input email: "
+    read email
+    printf "$email"
+    ```
+
+    ![prompt](https://media.giphy.com/media/S9Ps0mDRJhTbT9hYxw/giphy.gif)
+
 * **Security**
   
   * Don't store your credentials in shell scripts, people can have access to your script. Use `ENV` variables or [vaults](https://www.vaultproject.io/) instead.
