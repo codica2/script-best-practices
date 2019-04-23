@@ -2,7 +2,7 @@
 
 ![Bash](https://cdn-images-1.medium.com/max/256/1*FEE98iWinlZBYkxBAG8MvA.png)
 
-[**Bash**](https://www.gnu.org/software/bash/) is an ideal systems language for UNIX or command line tasks. Of course in some cases it's better to use a systems language like C or Go. It can cover almost all of your problems, you just need to use it.
+[**Bash**](https://www.gnu.org/software/bash/) is an ideal systems language for UNIX or command line tasks. Of course in some cases it's better to use a systems language like C or Go. But Bash can cover almost all of your problems, you just need to use it.
 
 * **Basic Rules**
 
