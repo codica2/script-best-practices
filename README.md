@@ -79,29 +79,33 @@
   
 * **Security**
   
-  * Don't store your credentials in shell scripts, people can have access to your script. Use `ENV` variables or vaults instead.
+  * Don't store your credentials in shell scripts, people can have access to your script. Use `ENV` variables or [vaults](https://www.vaultproject.io/) instead.
 
   * You should always remember that your script can be executed on other machines or in container, so you need to use environment variables i.e.
   
   ```bash
-  # Copying file or directory from remote machine with ENV path
-  scp 192.168.0.1:$HOME $TEMP
+  # Copying from remote machine with ENV path
+  scp 192.168.0.1:$HOME $HOME
   ```
 
   * Instead of
 
   ```bash
-  # Copying file or directory from remote machine with with absolute path
-  scp 192.168.0.1:/home/myuser/ /etc/temp
+  # Copying from remote machine with with absolute path
+  scp 192.168.0.1:/home/myuser /home/otheruser
   ```
 
   * Because there may not be those directories you want to copy
 
-  * Sometimes script will be executed even when a command fails, it will affect the rest of the script. Use `set` exit a script when a command fails
+  * Sometimes script will be executed even when a command fails, it will affect the rest of the script. Use `set -o errexit` exit a script when a command fails
+    * `nounset` flag to exit when your script tries to use undeclared variables
+    * `xtrace` to trace what gets executed. Useful for debug
 
   ```bash
    #let script exit if a command fails
    set -o errexit
+   set -o nounset
+   set -o xtrace
   ```
 
 * **Useful Tips**
