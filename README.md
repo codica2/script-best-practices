@@ -2,13 +2,13 @@
 
 ![Bash](https://cdn-images-1.medium.com/max/256/1*FEE98iWinlZBYkxBAG8MvA.png)
 
-[**Bash**](https://www.gnu.org/software/bash/) is an ideal systems language for UNIX or command line tasks. Of course in some cases it's better to use a systems language like C or Go. But Bash can cover almost all of your problems, you just need to use it.
+[**Bash**](https://www.gnu.org/software/bash/) is an ideal systems language for UNIX or command line tasks. Of course, in some cases it's better to use systems languages like C or Go. However, Bash can solve almost all of your problems, you just need to use it.
 
 * **Basic Rules**
 
-  * The principles of Clean Code apply to Bash
-
-  * All code blocks should be commented, it it makes script easier to read and understand
+  * It’s recommended to apply Clean Code principles while working with Bash
+  
+  * All code blocks should be commented. Thus, it makes the script easier to read and understand
 
   * Always double quote variables, including subshells. No naked `$` signs
 
@@ -30,8 +30,8 @@
 
 * **Variables**
   
-  * For variables, use names that reflect the values stored in them, but try to make it more briefly
-    * Make static variables readonly
+  * Concerning variables, use names that reflect the values stored in them, but try to make it more briefly
+    * Make static variables read-only
 
     ```bash
     # Password file variable
@@ -40,7 +40,7 @@
 
   * Always use local when setting variables, unless there is reason to use declare
 
-    * Exception being rare cases when you are intentionally setting a variable in an outer scope.
+    * An exception to this are cases when you are intentionally setting a variable in an outer scope.
 
     ```bash
     func(){
@@ -63,7 +63,7 @@
 
 * **I/O**
 
-  * You should preffer `printf` instead of `echo`
+  * You should prefer `printf` to `echo`
 
     * `printf` gives more control over the output, it’s more portable and its behaviour is defined better.
 
@@ -75,9 +75,9 @@
   }
   ```
 
-  * It should always return 0 on success or different value in other case, it would be great if you can handle those
+  * It should always return 0 in case of a success and another value otherwise. It would be great if you can handle those
 
-  * If your script require user input, use prompts
+  * If your script requires user input, use prompts
   
     ```bash
     printf "Input email: "
@@ -101,18 +101,18 @@
   * Instead of
 
   ```bash
-  # Copying from remote machine with with absolute path
+  # Copying from remote machine with an absolute path
   scp 192.168.0.1:/home/myuser /home/otheruser
   ```
 
-  * Because there may not be those directories you want to copy
+  * The matter is that there may not be those directories you want to copy
 
-  * Sometimes script will be executed even when a command fails, it will affect the rest of the script. Use `set -o errexit` exit a script when a command fails
-    * `nounset` flag to exit when your script tries to use undeclared variables
-    * `xtrace` to trace what gets executed. Useful for debug
+  * Sometimes the script will be executed even when a command fails. Thus, will affect the rest of the script. Use `set -o errexit` exit a script when a command fails.
+    * `nounset` flag to exit when your script tries to use undeclared variables.
+    * `xtrace` helps to trace what gets executed (useful for debugging)
 
   ```bash
-   #let script exit if a command fails
+   #let the script exit if a command fails
    set -o errexit
    set -o nounset
    set -o xtrace
@@ -120,17 +120,17 @@
 
 * **Useful Tips**
   
-  * Prefer absolute paths `/home/user/file` instead of relative `~/file`
+  * You should prefer absolute paths `/home/user/file` instead to relative `~/file`
 
-  * Use `.sh` or `.bash` extension if file is meant to be included/sourced. Never on executable script.
+  * Use `.sh` or `.bash` extension if the file is meant to be included/sourced. Don’t use these extensions on executable script.
 
-  * Never use deprecated style.
+  * Do not use deprecated style.
 
     * Define functions as `func() { }`
 
     * Always use `[[...]]` instead of `[]`
 
-    * Never use backticks, use `$( ... )`
+    * Do not use backticks, use `$( ... )`
 
 ## License
 
